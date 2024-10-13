@@ -20,7 +20,7 @@ def send_welcome(message):
         today_forecast_btn = types.InlineKeyboardButton(text="Прогноз на день", callback_data=f"today_forecast&{data['city_name']}&{data['country_code']}&{message.chat.id}")
         daily_forecast_btn = types.InlineKeyboardButton(text="Прогноз на 16 дней", callback_data=f"daily_forecast&{data['city_name']}&{data['country_code']}&{message.chat.id}")
         kb.add(today_forecast_btn, daily_forecast_btn)
-        bot.send_message(message.chat.id, f"<b>{data['city_name']} [{data['country_code']}]</b>, сейчас:\n\n<b>Температура:</b> {data['temp']} °C\n<b>Влажность:</b> {data['rh']}%\n<b>Давление:</b> {mbar_to_mm_hg(data['pres'])} мм. рт. ст.", parse_mode='HTML',
+        bot.send_message(message.chat.id, f"<b>{data['city_name']} [{data['country_code']}]</b>, сейчас:\n\n<b>Температура:</b> {data['temp']} °C\n<b>Влажность:</b> {data['rh']}%\n<b>Давление:</b> {mbar_to_mm_hg(data['pres'])} мм. рт. ст.\n<b>Ветер:</b> {data['wind_cdir']}, {data['wind_spd']} м/с\n<b>Облачность:</b> {data['clouds']}%", parse_mode='HTML',
                          reply_markup=kb)
     else:
         bot.send_message(message.chat.id, "Что-то пошло не так...")
