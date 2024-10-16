@@ -1,6 +1,6 @@
 import requests
-from config import WEATHER_API_KEY
 
+from config import WEATHER_API_KEY
 
 # pop -- вероятность осадков
 # max_temp -- минимальная температура за сутки, °C
@@ -12,17 +12,21 @@ from config import WEATHER_API_KEY
 
 
 def current_weather(city):
-    request = requests.get(f"https://api.weatherbit.io/v2.0/current?city={city}&key={WEATHER_API_KEY}")
+    request = requests.get(
+        f"https://api.weatherbit.io/v2.0/current?city={city}&key={WEATHER_API_KEY}"
+    )
 
     if request.status_code == 200:
         return request.json()["data"][0]
     else:
         print(f"Fail. Status code: {request.status_code}")
         return False
-    
+
 
 def today_weather(city):
-    request = requests.get(f"https://api.weatherbit.io/v2.0/forecast/hourly?city={city}&key=a615b6f103ab48a681fe4683accbba9e")
+    request = requests.get(
+        f"https://api.weatherbit.io/v2.0/forecast/hourly?city={city}&key=a615b6f103ab48a681fe4683accbba9e"
+    )
 
     if request.status_code == 200:
         return request.json()["data"]
@@ -32,7 +36,9 @@ def today_weather(city):
 
 
 def daily_weather(city):
-    request = requests.get(f"https://api.weatherbit.io/v2.0/forecast/daily?city={city}&key={WEATHER_API_KEY}")
+    request = requests.get(
+        f"https://api.weatherbit.io/v2.0/forecast/daily?city={city}&key={WEATHER_API_KEY}"
+    )
 
     if request.status_code == 200:
         return request.json()["data"]

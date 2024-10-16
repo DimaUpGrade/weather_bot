@@ -1,4 +1,4 @@
 [flake8]
 exclude = .git,__pycach__,venv, __init__.__pycach__
 max-line-length = 79
-ignore = E203, E266, E501, W503
+ignore = E203, E266, E501, W503, E402
