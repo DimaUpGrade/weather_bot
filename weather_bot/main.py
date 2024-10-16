@@ -11,7 +11,7 @@ bot = telebot.TeleBot(TOKEN)
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     bot.send_message(message.chat.id, "Привет! Я могу подсказать погоду в твоём городе на ближайшее время! Напиши название своего города!")
-    p = ""
+
 
 @bot.message_handler()
 def send_welcome(message):
