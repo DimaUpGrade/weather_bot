@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  bot:
+    build:
+      dockerfile: ./weather_bot/Dockerfile
+    command: sh ./run_bot.sh
+    volumes:
+      - ./weather_bot:/usr/src/weather_bot/
+    env_file:
+      - ./.env
